@@ -1,6 +1,7 @@
 "use client";
 
 import ProjectHeader from "@/app/projects/ProjectHeader";
+import ModalNewTask from "@/components/ModalNewTask";
 import React, { useState } from "react";
 import Board from "../BoardView";
 import List from "../ListView";
@@ -18,6 +19,11 @@ const Project = ({ params }: Props) => {
 
   return (
     <div>
+      <ModalNewTask
+        isOpen={isModalNewTaskOpen}
+        onClose={() => setIsModalNewTaskOpen(false)}
+        id={id}
+      />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "Board" && (
         <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
